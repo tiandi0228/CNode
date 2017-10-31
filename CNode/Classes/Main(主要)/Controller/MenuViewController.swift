@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import SnapKit
 
-class MenuViewController: UIViewController {
-
+class MenuViewController: UITableViewController {
+    
+    var SCREEN_WIDTH = UIScreen.main.bounds.width
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.clear
-        
-        self.view.frame = CGRect(x: 0, y: 0, width: 320 * 0.78, height: 375)
+        self.view.frame.size.width = SCREEN_WIDTH - 50
+//        self.view.center.x = 0
+//        self.view.center.y = 0
     }
 
     override func didReceiveMemoryWarning() {
