@@ -9,21 +9,20 @@
 /* Begin PBXBuildFile section */
 		196219B11FA594C6008C73C9 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196219B01FA594C6008C73C9 /* MainTableViewCell.swift */; };
 		196219B31FA594D8008C73C9 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196219B21FA594D8008C73C9 /* MainTableViewController.swift */; };
-		196219B71FA5CFD1008C73C9 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196219B61FA5CFD1008C73C9 /* MenuViewController.swift */; };
-		196219B91FA5D11E008C73C9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196219B81FA5D11E008C73C9 /* RootViewController.swift */; };
 		19864A281FA4EA3B00D24064 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19864A271FA4EA3B00D24064 /* AppDelegate.swift */; };
 		19864A2A1FA4EA3B00D24064 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19864A291FA4EA3B00D24064 /* ViewController.swift */; };
 		19864A2D1FA4EA3B00D24064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19864A2B1FA4EA3B00D24064 /* Main.storyboard */; };
 		19864A2F1FA4EA3B00D24064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19864A2E1FA4EA3B00D24064 /* Assets.xcassets */; };
 		19864A321FA4EA3B00D24064 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19864A301FA4EA3B00D24064 /* LaunchScreen.storyboard */; };
+		19E9B7741FAB3E6D00D98EAC /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E9B7731FAB3E6D00D98EAC /* MainNavController.swift */; };
+		19E9B77A1FAB639E00D98EAC /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E9B7791FAB639E00D98EAC /* MenuTableViewCell.swift */; };
+		19E9B77C1FAB651A00D98EAC /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E9B77B1FAB651A00D98EAC /* MenuTableViewController.swift */; };
 		C6B84F7BBF360CD88350482E /* Pods_CNode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F1A5D7D5933FEC5E5452AD0 /* Pods_CNode.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		196219B01FA594C6008C73C9 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		196219B21FA594D8008C73C9 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
-		196219B61FA5CFD1008C73C9 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		196219B81FA5D11E008C73C9 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		19864A241FA4EA3B00D24064 /* CNode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CNode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19864A271FA4EA3B00D24064 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19864A291FA4EA3B00D24064 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,6 +30,9 @@
 		19864A2E1FA4EA3B00D24064 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19864A311FA4EA3B00D24064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19864A331FA4EA3B00D24064 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19E9B7731FAB3E6D00D98EAC /* MainNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
+		19E9B7791FAB639E00D98EAC /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		19E9B77B1FAB651A00D98EAC /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		2F1A5D7D5933FEC5E5452AD0 /* Pods_CNode.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CNode.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46DB6345CEF3F62E49312E89 /* Pods-CNode.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNode.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CNode/Pods-CNode.debug.xcconfig"; sourceTree = "<group>"; };
 		96C91AF07E9DC6AF18A8FFF5 /* Pods-CNode.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CNode.release.xcconfig"; path = "Pods/Target Support Files/Pods-CNode/Pods-CNode.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,8 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				196219B21FA594D8008C73C9 /* MainTableViewController.swift */,
-				196219B61FA5CFD1008C73C9 /* MenuViewController.swift */,
-				196219B81FA5D11E008C73C9 /* RootViewController.swift */,
+				19E9B7731FAB3E6D00D98EAC /* MainNavController.swift */,
+				19E9B77B1FAB651A00D98EAC /* MenuTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +114,7 @@
 			children = (
 				19864A2B1FA4EA3B00D24064 /* Main.storyboard */,
 				196219B01FA594C6008C73C9 /* MainTableViewCell.swift */,
+				19E9B7791FAB639E00D98EAC /* MenuTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/JVFloatingDrawer/JVFloatingDrawer.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
@@ -267,6 +271,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JVFloatingDrawer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
@@ -285,8 +290,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				19864A2A1FA4EA3B00D24064 /* ViewController.swift in Sources */,
-				196219B71FA5CFD1008C73C9 /* MenuViewController.swift in Sources */,
-				196219B91FA5D11E008C73C9 /* RootViewController.swift in Sources */,
+				19E9B77A1FAB639E00D98EAC /* MenuTableViewCell.swift in Sources */,
+				19E9B7741FAB3E6D00D98EAC /* MainNavController.swift in Sources */,
+				19E9B77C1FAB651A00D98EAC /* MenuTableViewController.swift in Sources */,
 				19864A281FA4EA3B00D24064 /* AppDelegate.swift in Sources */,
 				196219B31FA594D8008C73C9 /* MainTableViewController.swift in Sources */,
 				196219B11FA594C6008C73C9 /* MainTableViewCell.swift in Sources */,

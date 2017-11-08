@@ -1,34 +1,30 @@
 //
-//  MainTableViewController.swift
+//  MenuTableViewController.swift
 //  CNode
 //
-//  Created by sunyuchun on 2017/10/29.
+//  Created by sunyuchun on 2017/11/2.
 //  Copyright © 2017年 sunyc. All rights reserved.
 //
 
 import UIKit
-import JVFloatingDrawer
 
-class MainTableViewController: UITableViewController {
-
+class MenuTableViewController: UITableViewController {
+    
+    var tabs = ["全部", "精华", "分享", "问答", "招聘", "客户端测试"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.clear
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - 菜单
-    // 左侧
-    @IBAction func LeftButtonItem(_ sender: UIBarButtonItem) {
-        self.drawerViewController?.toggleDrawer(with: .left, animated: true, completion: nil)
-    }
-    
-    
+
     // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -36,16 +32,17 @@ class MainTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return tabs.count
     }
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuTableViewCell
         
-        /// 设置头像为圆形
-        cell.avatarImageView.layer.cornerRadius = 15
-        cell.avatarImageView.clipsToBounds = true
-
+        cell.backgroundColor = UIColor.clear
+        cell.contentView.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
+        cell.tabLabel.text = tabs[indexPath.row]
+        cell.selectedBackgroundView?.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.7)
         return cell
     }
     

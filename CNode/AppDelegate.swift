@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import JVFloatingDrawer
+
+extension UIViewController {
+    var drawerViewController: JVFloatingDrawerViewController? {
+        get {
+            return UIApplication.shared.keyWindow?.rootViewController as? JVFloatingDrawerViewController
+        }
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
