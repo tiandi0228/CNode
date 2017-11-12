@@ -1,13 +1,8 @@
 platform :ios, '9.0'
 use_frameworks!
 target 'CNode' do
-pod 'Alamofire'
+pod 'SnapKit', '~> 4.0.0'
 pod 'SwiftyJSON'
-pod 'HandyJSON'
-pod 'CRRefresh'
-pod 'AlamofireImage', '~> 3.3'
-pod 'SwiftDate', '~> 4.3.0'
-pod 'SnapKit', '~> 3.0.2'
-pod 'Kingfisher', '~> 3.13.1'
-pod 'JVFloatingDrawer'
+pod 'Alamofire', '~> 4.1'
+pod 'Moya', '~> 10.0.0-beta.1'
 end
