@@ -10,16 +10,20 @@ import UIKit
 import SnapKit
 import SwiftyJSON
 import Moya
+import RxSwift
 
 class HomeTableViewController: UITableViewController {
+    
     var buttonsArray: NSMutableArray!
     @IBOutlet weak var TabsView: UIView!
+    // 列表数据
+    var topics:Array<JSON> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.Tabs()
-//        self.Data()
+        self.Data()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,9 +33,18 @@ class HomeTableViewController: UITableViewController {
     
     // MARK: - 网络请求
     func Data() {
-        let provider = MoyaProvider<API>()
-        provider.request(API.topics(page: 0, tab: "all", limit: 10)) { result in
-            print(result)
+        Api.request(.topics(page: 1, tab: nil, limit: 10)) { result in
+            if case let .success(response) = result {
+                let data = try? response.mapJSON()
+                let json = JSON(data!)
+//                self.topics = json["data"].arrayValue
+                self.topics.append(contentsOf: json["data"].arrayValue)
+                
+                // 刷新表格数据
+                DispatchQueue.main.async{
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -43,11 +56,9 @@ class HomeTableViewController: UITableViewController {
         let count = tabs.count
         // 算出平均宽度
         let WIDTH = Config.SCREEN_WIDTH / CGFloat(count)
-        // 菜单
-        let tabButton = UIButton.init(type: .system)
         for i in stride(from: 0, to: count, by: 1) {
-            print("x:", WIDTH * CGFloat(i), "y:", 0.0, "width:", WIDTH, "height:", 44.0)
-            tabButton.frame = CGRect(x: WIDTH * CGFloat(i), y: 0.0, width: WIDTH, height: 44.0)
+            let tabButton = UIButton.init(type: .system)
+            tabButton.frame = CGRect(x: WIDTH * CGFloat(i), y: 0, width: WIDTH, height: 44)
             tabButton.tag = i
             tabButton.setTitle(tabs[i] as String, for: UIControlState.normal)
             tabButton.backgroundColor = UIColor(red: 89/255, green: 89/255, blue: 89/255, alpha: 1)
@@ -83,16 +94,29 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return topics.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeTableViewCell
         
-        /// 设置头像为圆形
+        let topic = topics[indexPath.row]
+        
+        cell.nameLabel.text = topic["author"]["loginname"].string
+        
+        // 设置头像为圆形
         cell.avatarImageView.layer.cornerRadius = 15
         cell.avatarImageView.clipsToBounds = true
-        
+        // 标签
+        cell.topLabel.text = topic["tab"].string
+        // 标题
+        cell.titleLabel.text = topic["title"].string
+        // 回复数
+        cell.replyCountLabel.text = topic["reply_count"].string
+        // 浏览量
+        cell.visitCountLabel.text = topic["visit_count"].string
+        // 内容
+        cell.contentLabel.text = topic["content"].string
         return cell
     }
 
