@@ -1,33 +1,86 @@
 PODS:
   - Alamofire (4.5.1)
-  - Moya (10.0.0-beta.1):
-    - Moya/Core (= 10.0.0-beta.1)
-  - Moya/Core (10.0.0-beta.1):
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - DZNEmptyDataSet (1.8.1)
+  - JCore (1.1.6)
+  - Jelly (1.2.3)
+  - JGProgressHUD (2.0)
+  - JPush (3.0.7):
+    - JCore (~> 1.1.6)
+  - Kingfisher (4.2.0)
+  - Moya/Core (10.0.0):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - Moya/RxSwift (10.0.0-beta.1):
+  - Moya/RxSwift (10.0.0):
     - Moya/Core
-    - RxSwift (= 4.0.0-rc.0)
+    - RxSwift (~> 4.0)
+  - ObjectMapper (3.1.0)
   - Result (3.2.4)
-  - RxSwift (4.0.0-rc.0)
+  - Reveal-iOS-SDK (1.6.2)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
   - SnapKit (4.0.0)
-  - SwiftyJSON (3.1.4)
+  - SwiftDate (4.4.2)
+  - swiftScan (1.1.2)
+  - UMengAnalytics (4.2.4)
+  - WMPageController (2.4.3)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.1)
-  - Moya (~> 10.0.0-beta.1)
+  - Alamofire
+  - AlamofireImage
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - DZNEmptyDataSet
+  - Jelly
+  - JGProgressHUD
+  - JPush
+  - Kingfisher
   - Moya/RxSwift
+  - ObjectMapper
+  - Reveal-iOS-SDK
+  - RxCocoa
+  - RxSwift
   - SnapKit (~> 4.0.0)
-  - SwiftyJSON
+  - SwiftDate
+  - swiftScan
+  - UMengAnalytics
+  - WMPageController
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
+    :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  Moya: 7fb3c51aa9b3fdf5ea7d9412e03b63edb9559fb3
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
+  Jelly: 471c401b62f86845db3d66dfaca29c89ab8cdcd2
+  JGProgressHUD: c402c0f41fc291ca7e33bba2f999118d9682dd9c
+  JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
+  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
+  Moya: adb58b0f4e58430db43cc6e2f6ebab1836501186
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  RxSwift: 1dd09ceb11531c39adff4efe23556b1484e16967
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftDate: 131cf2f09b390f0a07f0099e36005ffe2fbf4c7e
+  swiftScan: 5bb808704805fc734fc63058143d8468dd11452e
+  UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
+  WMPageController: 4c7f2c636675a71aea5eecf8fdc07a0ce86954e3
 
-PODFILE CHECKSUM: c972a786466957edb85f6609f7735717623f48ff
+PODFILE CHECKSUM: 88fe1a0fd0904f3d26c7fa7d31c5e4266377b958
 
 COCOAPODS: 1.3.1

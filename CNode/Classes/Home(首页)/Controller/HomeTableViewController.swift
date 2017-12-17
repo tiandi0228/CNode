@@ -7,17 +7,16 @@
 //
 
 import UIKit
-import SnapKit
-import SwiftyJSON
-import Moya
 import RxSwift
+import Kingfisher
 
 class HomeTableViewController: UITableViewController {
     
     var buttonsArray: NSMutableArray!
     @IBOutlet weak var TabsView: UIView!
     // 列表数据
-    var topics:Array<JSON> = []
+    var topics:[Topic] = []
+    let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,23 +28,6 @@ class HomeTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - 网络请求
-    func Data() {
-        Api.request(.topics(page: 1, tab: nil, limit: 10)) { result in
-            if case let .success(response) = result {
-                let data = try? response.mapJSON()
-                let json = JSON(data!)
-//                self.topics = json["data"].arrayValue
-                self.topics.append(contentsOf: json["data"].arrayValue)
-                
-                // 刷新表格数据
-                DispatchQueue.main.async{
-                    self.tableView.reloadData()
-                }
-            }
-        }
     }
     
     // MARK: - 顶部菜单
@@ -68,6 +50,16 @@ class HomeTableViewController: UITableViewController {
             TabsView.addSubview(tabButton)
             buttonsArray.add(tabButton)
         }
+    }
+    
+    // MARK: - 网络请求
+    func Data() {
+        Api.request(.topics(page: 1, tab: nil, limit: 10)).map([Topic].self, atKeyPath: "data").subscribe(onSuccess: { (res) in
+            self.topics = res
+            self.tableView.reloadData()
+        }, onError: { (err) in
+            print((err as? NetError)?.errorDescription ?? "网络链接错误")
+        }).disposed(by: bag)
     }
     
     @objc func onClickBtn(_ button:UIButton) {
@@ -102,24 +94,30 @@ class HomeTableViewController: UITableViewController {
         
         let topic = topics[indexPath.row]
         
-        cell.nameLabel.text = topic["author"]["loginname"].string
-        
+        cell.nameLabel.text = topic.author?.loginname
         // 设置头像为圆形
+        let url = URL(string: (topic.author?.avatar_url)!)
+        cell.avatarImageView.kf.setImage(with: url)
         cell.avatarImageView.layer.cornerRadius = 15
         cell.avatarImageView.clipsToBounds = true
         // 标签
-        cell.topLabel.text = topic["tab"].string
+        cell.topLabel.isHidden = !topic.top
         // 标题
-        cell.titleLabel.text = topic["title"].string
+        cell.titleLabel.text = topic.title
         // 回复数
-        cell.replyCountLabel.text = topic["reply_count"].string
+        cell.replyCountLabel.text = "\(topic.reply_count)"
         // 浏览量
-        cell.visitCountLabel.text = topic["visit_count"].string
+        cell.visitCountLabel.text = "\(topic.visit_count)"
         // 内容
-        cell.contentLabel.text = topic["content"].string
+        cell.contentLabel.text = topic.content.replacingHTMLEntities
+        // 发布时间
+        cell.createTimeLabel.text = topic.create_at.currentDateIntoString()
+        // 回复时间
+        cell.lastReplyTimeLabel.text = topic.last_reply_at.fromNow()
+        
         return cell
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

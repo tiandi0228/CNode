@@ -8,13 +8,10 @@
 
 import Foundation
 import Moya
-import Alamofire
-import SwiftyJSON
-import RxSwift
 
-let Api = MoyaProvider<API>()
+let Api = MoyaProvider<API>().rx
 
-public enum API {
+enum API {
     case topics(page: Int?, tab: String?, limit:Int?) // 主题首页
     case getTopic(id: String, mdrender: String?, accesstoken: String?) // 主题详情
     case postTopics(accesstoken: String, title: String, tab: String, content: String) // 新建主题
@@ -25,11 +22,11 @@ public enum API {
 
 extension API: TargetType {
     
-    public var baseURL: URL {
+    var baseURL: URL {
         return NSURL(string: Config.baseUrl)! as URL
     }
     
-    public var path: String {
+    var path: String {
         switch self {
         case .topics(_, _, _):
             return "/api/v1/topics"
@@ -46,20 +43,41 @@ extension API: TargetType {
         }
     }
     
-    public var method: Moya.Method {
+    var method: Moya.Method {
         switch self {
-        case .topics, .getTopic:
+        case .topics(_, _, _), .getTopic(_, _, _):
             return .get
         default:
             return .post
         }
     }
     
-    public var sampleData: Data {
+    var parameters: [String: Any]? {
+        switch self {
+        case .topics(let page, let tab, let limit):
+            return ["page":page ?? 1, "tab":tab ?? "all", "limit":limit ?? 10]
+        case .getTopic(let id, let mdrender, let accesstoken):
+            return ["id": id, "mdrender":mdrender ?? "", "accesstoken":accesstoken ?? ""]
+        case .postTopics(let accesstoken, let title, let tab, let content):
+            return ["accesstoken":accesstoken, "title":title, "tab":tab, "content":content]
+        case .updateTopics(let accesstoken, let topic_id, let title, let tab, let content):
+            return ["accesstoken":accesstoken, "topic_id":topic_id, "title":title, "tab":tab, "content":content]
+        case .collect(let accesstoken, let topic_id):
+            return ["accesstoken":accesstoken, "topic_id":topic_id]
+        case .deCollect(let accesstoken, let topic_id):
+            return ["accesstoken":accesstoken, "topic_id":topic_id]
+        }
+    }
+    
+    var sampleData: Data {
         return "{}".utf8Encoded
     }
     
-    public var task: Task {
+    var parameterEncoding: ParameterEncoding {
+        return JSONEncoding.default // Send parameters as JSON in request body
+    }
+    
+    var task: Task {
         switch self {
         case .topics(let page, let tab, let limit):
             var params: [String: Any] = [:]
@@ -78,11 +96,11 @@ extension API: TargetType {
         }
     }
     
-    public var validate: Bool {
+    var validate: Bool {
         return false
     }
     
-    public var headers: [String : String]? {
+    var headers: [String : String]? {
         return nil
     }
 }
